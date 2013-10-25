@@ -1,5 +1,5 @@
-require 'rss/1.0'
-require 'rss/2.0'
+require 'rss'
+#require 'rss/2.0'
 require 'net/http'
 require 'uri'
 require 'rubygems'
@@ -17,7 +17,7 @@ end
 
 class RubyPodder
 
-  Version = 'rubypodder v1.0.0'
+  Version = 'rubypodder v2.0.0'
 
   attr_reader :conf_file, :log_file, :done_file, :date_dir
 
@@ -57,7 +57,7 @@ class RubyPodder
 
   def read_feeds
     #IO.readlines(@conf_file).each {|l| l.chomp!}
-    rio(@conf_file).chomp.readlines.reject {|i| i =~ /^#/}
+    rio(@conf_file).chomp.readlines.reject {|i| i =~ /^#/ || i =~ /^\s*$/}
   end
 
   def parse_rss(rss_source)
@@ -159,6 +159,119 @@ class RubyPodder
   end
 
 end
+
+class RubyPodFeed
+  attr_accessor :conf_file, :name
+
+  def initialize(name)
+    @name=name
+    @conf_file=nil
+    default_init
+  end
+  
+  def fetch_new
+    log_start
+    log_end  
+  end
+
+  def list_releases
+    
+  end
+
+  def load_conf
+    return default_init if @conf_file.nil?
+
+  end
+
+  def save_conf
+    return nil if @conf_file.nil?
+
+  end
+
+private
+
+  def default_init
+    @saver=RubyPodSaverByName.new(@name)
+  end
+
+  def log_start
+    
+  end
+
+  def log_end
+  end
+end
+
+class RubyPodRelease
+
+  attr_accessor :name
+
+  def initialize(name)
+    @name=name
+  end
+  
+  def status
+    
+  end
+  
+end
+
+class RubyPodSaver
+  attr_reader :name
+
+  DEFAULT_BASE=File.expand_path('~/.rubypodder')
+
+  def initialize(new_name, opts={})
+    self.name=new_name
+    @base_path=opts[:base_path] || DEFAULT_BASE
+  end
+
+  def name= name
+    @name = name.gsub(/[/\\\0 ]+/, '_')
+  end
+
+  def save(release)
+    ensure_dir full_dirname
+    File.open(full_filename, "w") { |file| file.write release.content }
+    if release.has_shownotes?
+      ensure_dir shownotes_dirname
+      File.open(shownotes_filename, "w") { |file| file.write release.shownotes }
+    end
+  end
+
+  def ensure_dir dir
+    return true if File.directory? dir
+    File.makedirs dir
+  end
+end
+
+class RubyPodSaverByName <RubyPodSaver
+
+  def release_name
+    "#{release.date_string}-#{release.index}.#{release.format}"
+  end
+
+  def shownotes_name
+    "#{release.date_string}-#{release.index}.html"
+  end
+
+  def full_dirname
+    File.join @base_path, 'feeds', @name
+  end
+  
+  def shownotes_dirname
+    File.join @base_path, 'shownotes', @name
+  end
+  
+  def full_filename
+    File.join full_dirname, release_name
+  end
+
+  def shownotes_filename
+    File.join shownotes_dirname, shownotes_name
+  end
+end
+
 
 if $0 == __FILE__
   RubyPodder.new.run
