@@ -5,7 +5,10 @@ require 'uri'
 require 'rubygems'
 require 'rio'
 require 'logger'
-require 'ftools'
+require 'fileutils'
+
+require 'rubypodsavers'
+require 'rubypodrelease'
 
 class File
 
@@ -160,8 +163,12 @@ class RubyPodder
 
 end
 
+##################################################
+##################################################
+##################################################
+
 class RubyPodFeed
-  attr_accessor :conf_file, :name
+  attr_accessor :conf_file, :name, :current_index
 
   def initialize(name)
     @name=name
@@ -170,7 +177,14 @@ class RubyPodFeed
   end
   
   def fetch_new
+    log_update
+    update_feed
     log_start
+    releases.each do |r|
+      unless r.downloaded?
+        r.download
+      end
+    end
     log_end  
   end
 
@@ -185,13 +199,14 @@ class RubyPodFeed
 
   def save_conf
     return nil if @conf_file.nil?
-
+    raise 'not implemented'
   end
 
 private
 
   def default_init
-    @saver=RubyPodSaverByName.new(@name)
+    @saver=RubyPodSaver.create :byname, @name
+    @current_index=0
   end
 
   def log_start
@@ -199,76 +214,6 @@ private
   end
 
   def log_end
-  end
-end
-
-class RubyPodRelease
-
-  attr_accessor :name
-
-  def initialize(name)
-    @name=name
-  end
-  
-  def status
-    
-  end
-  
-end
-
-class RubyPodSaver
-  attr_reader :name
-
-  DEFAULT_BASE=File.expand_path('~/.rubypodder')
-
-  def initialize(new_name, opts={})
-    self.name=new_name
-    @base_path=opts[:base_path] || DEFAULT_BASE
-  end
-
-  def name= name
-    @name = name.gsub(/[/\\\0 ]+/, '_')
-  end
-
-  def save(release)
-    ensure_dir full_dirname
-    File.open(full_filename, "w") { |file| file.write release.content }
-    if release.has_shownotes?
-      ensure_dir shownotes_dirname
-      File.open(shownotes_filename, "w") { |file| file.write release.shownotes }
-    end
-  end
-
-  def ensure_dir dir
-    return true if File.directory? dir
-    File.makedirs dir
-  end
-end
-
-class RubyPodSaverByName <RubyPodSaver
-
-  def release_name
-    "#{release.date_string}-#{release.index}.#{release.format}"
-  end
-
-  def shownotes_name
-    "#{release.date_string}-#{release.index}.html"
-  end
-
-  def full_dirname
-    File.join @base_path, 'feeds', @name
-  end
-  
-  def shownotes_dirname
-    File.join @base_path, 'shownotes', @name
-  end
-  
-  def full_filename
-    File.join full_dirname, release_name
-  end
-
-  def shownotes_filename
-    File.join shownotes_dirname, shownotes_name
   end
 end
 

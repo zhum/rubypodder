@@ -1,32 +1,73 @@
 require 'rubygems'
-Gem::manage_gems
-require 'rake/gempackagetask'
-spec = Gem::Specification.new do |s|
-    s.platform  =   Gem::Platform::RUBY
-    s.name      =   "rubypodder"
-    s.version   =   "1.0.0"
-    s.author    =   "Lex Miller"
-    s.email     =   "lex.miller @nospam@ gmail.com"
-    s.summary   =   "A podcast aggregator without an interface"
-    s.files     =   FileList['lib/*.rb', 'tests/*', 'Rakefile'].to_a
-    s.require_path       = "lib"
-    s.bindir             = "bin"
-    s.executables        = ["rubypodder"]
-    s.default_executable = "rubypodder"
-    s.autorequire        = "rubypodder"
-    s.add_dependency("rio")
-    s.add_dependency("rake")
-    s.add_dependency("mocha")
-    s.test_files         = Dir.glob('tests/*.rb')
-    s.has_rdoc           = true
-    s.extra_rdoc_files   = ["README", "MIT-LICENSE"]
+require 'bundler'
+begin
+  Bundler.setup(:default, :development)
+rescue Bundler::BundlerError => e
+  $stderr.puts e.message
+  $stderr.puts "Run `bundle install` to install missing gems"
+  exit e.status_code
 end
-Rake::GemPackageTask.new(spec) do |pkg|
-    pkg.need_tar = true
+require 'rake'
+
+require 'jeweler'
+Jeweler::Tasks.new do |gem|
+  # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
+  gem.name = "rubypodder"
+  gem.homepage = "http://github.com/zhum/rubypodder"
+  gem.license = "BSD"
+  gem.summary = %Q{Simple podcast aggregator}
+  gem.description = %Q{Simple podcast aggregator with web interface}
+  gem.email = "serg@parallel.ru"
+  gem.authors = ["Lex Miller","Sergey Zhumatiy"]
+  # dependencies defined in Gemfile
+
+#  gem.add_dependency("rio")
+#  gem.add_dependency("rake")
+#  gem.add_dependency("mocha")
+
+#    s.platform  =   Gem::Platform::RUBY
+#    s.name      =   "rubypodder"
+#    s.version   =   "1.0.0"
+#    s.author    =   "Lex Miller"
+#    s.email     =   "lex.miller @nospam@ gmail.com"
+#    s.summary   =   "A podcast aggregator without an interface"
+#    s.files     =   FileList['lib/*.rb', 'tests/*', 'Rakefile'].to_a
+#    s.require_path       = "lib"
+#    s.bindir             = "bin"
+#    s.executables        = ["rubypodder"]
+#    s.default_executable = "rubypodder"
+#    s.autorequire        = "rubypodder"
+#    s.test_files         = Dir.glob('tests/*.rb')
+#    s.has_rdoc           = true
+#    s.extra_rdoc_files   = ["README", "MIT-LICENSE"]
+
+
 end
-task :default => "pkg/#{spec.name}-#{spec.version}.gem" do
-    puts "generated latest version"
+Jeweler::RubygemsDotOrgTasks.new
+
+
+
+
+#Gem::manage_gems
+#require 'rake/gempackagetask'
+#spec = Gem::Specification.new do |s|
+#end
+#Rake::GemPackageTask.new(spec) do |pkg|
+#    pkg.need_tar = true
+#end
+#task :default => "pkg/#{spec.name}-#{spec.version}.gem" do
+#    puts "generated latest version"
+#end
+#task :test do
+#    ruby "tests/ts_rubypodder.rb"
+#end
+
+require 'rake/testtask'
+
+Rake::TestTask.new do |t|
+  t.libs << 'spec'
+  t.libs << 'lib'
+  t.test_files = FileList['tests/**/*_spec.rb']
+  t.verbose = true
 end
-task :test do
-    ruby "tests/ts_rubypodder.rb"
-end
+
