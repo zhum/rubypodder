@@ -51,8 +51,7 @@ Jeweler::RubygemsDotOrgTasks.new
 require 'rake/testtask'
 
 Rake::TestTask.new do |t|
-  t.libs << 'spec'
-  t.libs << 'lib'
+  t.libs << ['spec','lib','tests']
   t.test_files = FileList['tests/**/*_spec.rb']
   t.verbose = true
 end

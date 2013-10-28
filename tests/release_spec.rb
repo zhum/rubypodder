@@ -1,5 +1,6 @@
 require 'minitest/spec'
 require 'minitest/autorun'
+require "minitest_helper"
 
 require 'rubypodder'
 
@@ -32,17 +33,17 @@ describe RubyPodRelease do
 	end
 
 	describe "download errors handled" do
-    before do
+    before(:each) do
     	@r.url='bad.mp3'
     	@r.download
     end
 
-	  describe "no content" do
-	  	@e.content.must_be_nil
+	  it "has nil content" do
+	  	@r.content.must_be_nil
 	  end
 
-	  describe "no content" do
-	  	@e.status.must_equal :error
+	  it "status is error" do
+	  	@r.status.must_equal :error
 	  end
 	end
 
