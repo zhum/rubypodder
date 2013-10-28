@@ -1,12 +1,13 @@
-#require 'rss/1.0'
-#require 'rss/2.0'
 require 'rss'
 require 'net/http'
 require 'uri'
 require 'rubygems'
 require 'rio'
 require 'logger'
-require 'ftools'
+require 'fileutils'
+
+require 'rubypodsavers'
+require 'rubypodrelease'
 
 class File
 
@@ -18,7 +19,7 @@ end
 
 class RubyPodder
 
-  Version = 'rubypodder v1.0.0'
+  Version = 'rubypodder v2.0.0'
 
   attr_reader :conf_file, :log_file, :done_file, :date_dir
 
@@ -58,7 +59,7 @@ class RubyPodder
 
   def read_feeds
     #IO.readlines(@conf_file).each {|l| l.chomp!}
-    rio(@conf_file).chomp.readlines.reject {|i| i =~ /^#/}
+    rio(@conf_file).chomp.readlines.reject {|i| i =~ /^#/ || i =~ /^\s*$/}
   end
 
   def parse_rss(rss_source)
@@ -160,6 +161,61 @@ class RubyPodder
   end
 
 end
+
+##################################################
+##################################################
+##################################################
+
+class RubyPodFeed
+  attr_accessor :conf_file, :name, :current_index
+
+  def initialize(name)
+    @name=name
+    @conf_file=nil
+    default_init
+  end
+  
+  def fetch_new
+    log_update
+    update_feed
+    log_start
+    releases.each do |r|
+      unless r.downloaded?
+        r.download
+      end
+    end
+    log_end  
+  end
+
+  def list_releases
+    
+  end
+
+  def load_conf
+    return default_init if @conf_file.nil?
+
+  end
+
+  def save_conf
+    return nil if @conf_file.nil?
+    raise 'not implemented'
+  end
+
+private
+
+  def default_init
+    @saver=RubyPodSaver.create :byname, @name
+    @current_index=0
+  end
+
+  def log_start
+    
+  end
+
+  def log_end
+  end
+end
+
 
 if $0 == __FILE__
   RubyPodder.new.run
