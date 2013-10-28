@@ -1,5 +1,6 @@
-require 'rss/1.0'
-require 'rss/2.0'
+#require 'rss/1.0'
+#require 'rss/2.0'
+require 'rss'
 require 'net/http'
 require 'uri'
 require 'rubygems'
