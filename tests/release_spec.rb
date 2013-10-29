@@ -1,6 +1,6 @@
 require 'minitest/spec'
 require 'minitest/autorun'
-require "minitest_helper"
+#require "minitest_helper"
 
 require 'rubypodder'
 

@@ -1,12 +1,13 @@
 class RubyPodRelease
 
-  attr_accessor :name, :title, :content, :shownotes, :index, :state
+  attr_accessor :name, :title, :content, :shownotes, :index, :state, :serie
   attr_accessor :format, :time, :url, :guid, :description, :mp3, :link
   attr_accessor :mp3link
 
   def initialize(n, u)
     @name=n
     @url=u
+    @time  = Time.now
   end
   
   def has_shownotes?

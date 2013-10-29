@@ -6,8 +6,8 @@ require 'rio'
 require 'logger'
 require 'fileutils'
 
-require 'rubypodsavers'
 require 'rubypodrelease'
+require 'releasepath'
 
 class File
 
