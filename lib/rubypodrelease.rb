@@ -1,15 +1,33 @@
 class RubyPodRelease
 
-  attr_accessor :name, :title, :content, :shownotes, :index, :state, :serie
+  attr_accessor :name, :title, :content, :shownotes, :index, :state, :feed
   attr_accessor :format, :time, :url, :guid, :description, :mp3, :link
   attr_accessor :mp3link
+  attr_accessor :author, :pubdate, :fresh, :path, :base_path
 
-  def initialize(n, u)
-    @name=n
-    @url=u
-    @time  = Time.now
+  def initialize(n, u='')
+    if n.kind_of? Hash
+      n.each do |k,v|
+        instance_variable_set(k,v)
+      end
+      self.strategy=self.strategy
+    else
+      @name=n
+      @url=u
+      @time  = Time.now
+    end
   end
   
+  def to_json
+    str=instance_variables.map do |i|
+      v=instance_variable_get(i)
+      [String,Array,Fixnum,Bignum,Symbol].include?(v.class) ?
+        Oj.dump({i=>v})[1..-2] :
+        nil
+    end.reject{|x| x.nil?}.join(",\n  ")
+    "{#{str}}\n"
+  end
+
   def has_shownotes?
     not :shownotes.nil?
   end
@@ -36,6 +54,15 @@ class RubyPodRelease
 
   def set_status(s)
     @status=s
+  end
+
+  def strategy
+    @strategy
+  end
+
+  def strategy= s
+    @strategy=s
+    @path=ReleasePath.create(s, self, :base_path => @base_path)
   end
 
   def download

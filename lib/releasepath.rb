@@ -11,16 +11,9 @@
 #
 
 class ReleasePath
-  attr_reader :release, :name, :serie, :base_path
+  attr_reader :release, :name, :feed, :base_path
 
   DEFAULT_BASE=File.expand_path('~/.rubypodder')
-
-  def initialize(release, opts={})
-    @release=release
-    @serie = fix_name(@release.serie) || 'unsorted'
-    @name  = fix_name(@release.name) || 'unnamed'
-    @base_path = opts[:base_path] || DEFAULT_BASE
-  end
 
   def self.create(type, release, opts={})
     PATH_TYPES[type].new(release,opts) || raise("Bad path type type: #{type}")
@@ -30,8 +23,8 @@ class ReleasePath
     @name=fix_name(str)
   end
 
-  def serie= str
-    @serie=fix_name(str)
+  def feed= str
+    @feed=fix_name(str)
   end
 
   def fix_name name
@@ -63,6 +56,13 @@ class ReleasePath
 
 private
 
+  def initialize(release, opts={})
+    @release=release
+    @feed = fix_name(@release.feed) || 'unsorted'
+    @name  = fix_name(@release.name) || 'unnamed'
+    @base_path = opts[:base_path] || DEFAULT_BASE
+  end
+
   def ensure_dir dir
     return true if File.directory? dir
     FileUtils.mkdir_p dir
@@ -80,11 +80,11 @@ class ReleasePathByName <ReleasePath
   end
 
   def full_dirname
-    File.join @base_path, 'feeds', @serie
+    File.join @base_path, 'feeds', @feed
   end
   
   def shownotes_dirname
-    File.join @base_path, 'shownotes', @serie
+    File.join @base_path, 'shownotes', @feed
   end
   
   def full_filename
@@ -99,11 +99,11 @@ end
 class ReleasePathByDate <ReleasePath
 
   def release_name
-    "#{@name}-#{"%05d" % release.index}.#{release.format}"
+    "#{@feed}-#{"%05d" % release.index}-#{@name}-#{release.date_string}.#{release.format}"
   end
 
   def shownotes_name
-    "#{@name}-#{"%05d" % release.index}.html"
+    "#{@feed}-#{"%05d" % release.index}-#{@name}-#{release.date_string}.html"
   end
 
   def full_dirname
@@ -126,11 +126,11 @@ end
 class ReleasePathInHeap <ReleasePath
 
   def release_name
-    "#{@name}-#{"%05d" % release.index}.#{release.format}"
+    "#{feed}-#{"%05d" % release.index}-#{@name}-#{release.date_string}.#{release.format}"
   end
 
   def shownotes_name
-    "#{@name}-#{"%05d" % release.index}.html"
+    "#{feed}-#{"%05d" % release.index}-#{@name}-#{release.date_string}.html"
   end
 
   def full_dirname

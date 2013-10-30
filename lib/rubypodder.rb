@@ -5,6 +5,8 @@ require 'rubygems'
 require 'rio'
 require 'logger'
 require 'fileutils'
+require 'forwardable'
+require 'oj'
 
 require 'rubypodrelease'
 require 'releasepath'
@@ -166,13 +168,29 @@ end
 ##################################################
 ##################################################
 
-class RubyPodFeed
-  attr_accessor :conf_file, :name, :current_index
+class PodFeedMetadata
+  attr_accessor :name, :url, :date, :agent, :current_index
+  attr_accessor :base_path, :store_strategy
+end
 
-  def initialize(name)
-    @name=name
-    @conf_file=nil
+class RubyPodFeed
+  extend Forwardable
+
+  attr_accessor :conf_file
+  attr_reader   :metadata
+
+  def_delegators :@metadata, :name, :url, :date, :agent, :current_index
+  def_delegators :@metadata, :base_path, :store_strategy
+
+  def_delegators :@metadata, :name=, :url=, :date=, :agent=, :current_index=
+  def_delegators :@metadata, :base_path=, :store_strategy=
+
+  def initialize(the_name, conf=nil)
     default_init
+    self.name=the_name
+    #warn "Name=#{name}/#{@metadata.name}"
+    @conf_file=conf
+    @items={}
   end
   
   def fetch_new
@@ -180,39 +198,108 @@ class RubyPodFeed
     update_feed
     log_start
     releases.each do |r|
-      unless r.downloaded?
+      unless r.path.release_file?
         r.download
       end
     end
     log_end  
   end
 
-  def list_releases
-    
+  def update_feed
+    begin
+      http_body = open(self.url, 'User-Agent' => agent).read
+      RSS::Parser.parse(http_body).items.each do |item|
+        next unless item.enclosure
+        next if @items.has_key? item.guid
+        rel=RubyPodRelease.new(item.title, item.enclosure)
+        rel.description=item.description
+        rel.pubdate=item.pubDate
+        rel.author=item.author
+        rel.guid=item.guid
+        rel.fresh=true
+        rel.index=new_index
+        rel.feed=self.name
+        rel.base_path=self.base_path
+        rel.strategy=self.store_strategy
+        #rel.path=ReleasePath.create(rel.strategy, rel, :base_path => base_path)
+        @items[rel.guid]=rel
+      end
+    #rescue  => e
+    #  log_warn "Cannot update '#{self.name}': #{e.message}"
+    #  warn "Cannot update '#{self.name}' (#{self.url}): #{e.message}"
+    end
+
+  end
+
+  def releases
+    @items
+  end
+
+  def items
+    @items
   end
 
   def load_conf
-    return default_init if @conf_file.nil?
-
+    return default_init if(@conf_file.nil? || ! File.file?(@conf_file))
+    @metadata=Oj.load_file(@conf_file)
+    self
   end
 
   def save_conf
     return nil if @conf_file.nil?
-    raise 'not implemented'
+    Oj.to_file(@conf_file,@metadata)
+    true
+  end
+
+  def save_items
+    return false if @conf_file.nil?
+    File.open("#{@conf_file}.items", "w") { |file|
+      str='{'+@items.map { |k,e| "#{Oj.dump(k.to_s)}:#{e.to_json}" }.join(',')+'}'
+      file.puts str
+    }
+    true
+  end
+
+  def load_items
+    return false if @conf_file.nil?
+    new_items=Oj.load_file("#{@conf_file}.items","r")
+    max_index=self.current_index
+    #warn "Loaded #{new_items.class}"
+    new_items.each do |k,v|
+      #warn "Restoring #{k} -> #{v}"
+      @items[k]=RubyPodRelease.new(v)
+      max_index = [max_index,@items[k].index].max
+    end
+    self.current_index=max_index
+    true
   end
 
 private
 
   def default_init
-    @saver=RubyPodSaver.create :byname, @name
-    @current_index=0
+    @metadata=PodFeedMetadata.new
+    self.current_index=0
+    self.agent='RubyPodder'
+    self.store_strategy=:byname
+    self.base_path=File.expand_path('~/.rubypodder')
+    self
+  end
+
+  def new_index
+    @current_index ||= 0
+    @current_index+=1
   end
 
   def log_start
-    
   end
 
   def log_end
+  end
+
+  def log_update
+  end
+
+  def log_warn message
   end
 end
 
@@ -220,3 +307,52 @@ end
 if $0 == __FILE__
   RubyPodder.new.run
 end
+
+__END__
+title
+link
+description
+category
+source
+enclosure
+comments
+author
+pubDate
+date
+guid
+content_encoded
+dc_title
+dc_descriptions
+dc_creator
+dc_subjects
+dc_subject
+dc_publishers
+dc_publisher
+dc_contributors
+dc_contributor
+dc_types
+dc_type
+dc_formats
+dc_format
+dc_identifiers
+dc_identifier
+dc_sources
+dc_source
+dc_coverages
+dc_coverage
+dc_rights_list
+dc_rights
+dc_dates
+dc_date
+itunes_author
+itunes_block
+itunes_keywords
+itunes_keywords_content
+itunes_subtitle
+itunes_summary
+itunes_name
+itunes_email
+itunes_duration
+parent
+tag_name
+full_name

@@ -8,35 +8,35 @@ describe ReleasePath do
   before do
   	@r=RubyPodRelease.new('release_name','tests/test.mp3')
     @r.name='my_release_name'
-    @r.serie='fake serie'
+    @r.feed='fake feed'
   end
 
-  describe "serie" do
+  describe "feed" do
     before do
-      @r.serie='my serie'
+      @r.feed='my feed'
       @p=ReleasePath.create(:byname,@r)
     end
 
-	  it "has serie similar to release" do
-	    @p.serie.must_equal 'my_serie'
+	  it "has feed similar to release" do
+	    @p.feed.must_equal 'my_feed'
 	  end
 
-    it "fixes serie with slashes and spaces in create" do
-      @r.serie="ac/dc seriez"
+    it "fixes feed with slashes and spaces in create" do
+      @r.feed="ac/dc feedz"
       @p=ReleasePath.create(:byname,@r)
-      @p.serie.must_equal 'ac_dc_seriez'
+      @p.feed.must_equal 'ac_dc_feedz'
     end
 
-    it "fixes serie with slashes and spaces in assigning" do
+    it "fixes feed with slashes and spaces in assigning" do
       @p=ReleasePath.create(:byname,@r)
-      @p.serie="ac/dc seriez"
-      @p.serie.must_equal 'ac_dc_seriez'
+      @p.feed="ac/dc feedz"
+      @p.feed.must_equal 'ac_dc_feedz'
     end
 
-    it "fixes empty serie" do
-      @r.serie=''
+    it "fixes empty feed" do
+      @r.feed=''
       @p=ReleasePath.create(:byname,@r)
-      @p.serie.must_equal 'unsorted'
+      @p.feed.must_equal 'unsorted'
     end
 
   end
@@ -71,25 +71,45 @@ describe ReleasePath do
 
   describe "paths" do
     describe "byname" do
-      it 'full path is ~/.rubypodder/feeds/:serie/:name-:date-:index.:format' do
+      it 'full path is ~/.rubypodder/feeds/:feed/:name-:date-:index.:format' do
         @r.index=123
         @r.format='mp9'
         t=Time.now.strftime("%Y-%m-%d")
         @p=ReleasePath.create(:byname,@r)
-        begin; File.delete "~/.rubypodder/feeds/fake_serie/my_release_name-#{t}-00123.mp9"; rescue; end
+        begin; File.delete File.expand_path("~/.rubypodder/feeds/fake_feed/my_release_name-#{t}-00123.mp9"); rescue; end
         @p.release_file("w") do |f|
           f.puts ""
         end
-        File.file?(File.expand_path("~/.rubypodder/feeds/fake_serie/my_release_name-#{t}-00123.mp9")).must_equal true
+        File.file?(File.expand_path("~/.rubypodder/feeds/fake_feed/my_release_name-#{t}-00123.mp9")).must_equal true
       end
     end
 
     describe "bydate" do
-      
+      it 'full path is ~/.rubypodder/feeds/:date/:feed-:index-:name-:date.:format' do
+        @r.index=123
+        @r.format='mp9'
+        t=Time.now.strftime("%Y-%m-%d")
+        @p=ReleasePath.create(:bydate,@r)
+        begin; File.delete File.expand_path("~/.rubypodder/feeds/#{t}/fake_feed-00123-my_release_name-#{t}.mp9"); rescue; end
+        @p.release_file("w") do |f|
+          f.puts ""
+        end
+        File.file?(File.expand_path("~/.rubypodder/feeds/#{t}/fake_feed-00123-my_release_name-#{t}.mp9")).must_equal true
+      end
     end
 
     describe "inheap" do
-
+      it 'full path is ~/.rubypodder/feeds/all/:feed-:index-:name-:date.:format' do
+        @r.index=123
+        @r.format='mp9'
+        t=Time.now.strftime("%Y-%m-%d")
+        @p=ReleasePath.create(:inheap,@r)
+        begin; File.delete File.expand_path("~/.rubypodder/feeds/all/fake_feed-00123-my_release_name-#{t}.mp9"); rescue; end
+        @p.release_file("w") do |f|
+          f.puts ""
+        end
+        File.file?(File.expand_path("~/.rubypodder/feeds/all/fake_feed-00123-my_release_name-#{t}.mp9")).must_equal true
+      end
     end
   end
 end
