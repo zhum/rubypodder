@@ -17,11 +17,19 @@ describe RubyPodRelease do
 
 	describe "download possibilities" do
 	  before do
+	  	@r.pubdate=Time.now
+	  	@r.format='mp5'
+	  	@r.index=987
 	  	@r.download
 	  end
 	  it "loads mp3" do
 	    mp3=File.read('tests/test.mp3')
-	    @r.content.must_equal mp3
+	    content=''
+	    #warn ">>>#{@r.path.release_name}"
+	    @r.path.release_file do |f|
+	    	content=f.read
+	    end
+	    content.must_equal mp3
 	  end
 	  it "loaded status is :loaded" do
 	    x=@r.status

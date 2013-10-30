@@ -1,9 +1,9 @@
 class RubyPodRelease
 
-  attr_accessor :name, :title, :content, :shownotes, :index, :state, :feed
+  attr_accessor :name, :title, :content, :shownotes, :index, :feed
   attr_accessor :format, :time, :url, :guid, :description, :mp3, :link
-  attr_accessor :mp3link
-  attr_accessor :author, :pubdate, :fresh, :path, :base_path
+  attr_accessor :author, :pubdate
+  attr_accessor :mp3link, :state, :fresh, :path, :base_path, :err_text
 
   def initialize(n, u='')
     if n.kind_of? Hash
@@ -14,7 +14,9 @@ class RubyPodRelease
     else
       @name=n
       @url=u
-      @time  = Time.now
+      @time = @pubdate = Time.now
+      @state = :not_initialized
+      self.strategy = :byname
     end
   end
   
@@ -37,7 +39,7 @@ class RubyPodRelease
   end
 
   def date_string
-    @time.strftime("%Y-%m-%d")
+    @pubdate.strftime("%Y-%m-%d")
   end
 
   def loaded?
@@ -70,15 +72,17 @@ class RubyPodRelease
     #logger.info("  Downloading: #{url}")
     set_status :loading
     begin
-      open(url, 'User-Agent' => agent) do |mp3|
-        @content=mp3.read
+      open(url, 'User-Agent' => agent) do |mp3stream|
+        @path.release_file("w") do |mp3file|
+          rio(mp3stream) > rio(mp3file)
+        end
       end
       mark_loaded
       set_status :loaded
     rescue => e
-      #logger.error("  Failed to download #{url} (#{e.message})")
+      warn("  Failed to download #{url} (#{e.message})")
       set_status :error
-      err_text="fail to download: #{e.message}"
+      @err_text="fail to download: #{e.message}"
     end
   end
 end

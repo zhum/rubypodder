@@ -197,7 +197,8 @@ class RubyPodFeed
     log_update
     update_feed
     log_start
-    releases.each do |r|
+    items.each do |id,r|
+      #warn r.inspect
       unless r.path.release_file?
         r.download
       end
@@ -210,17 +211,23 @@ class RubyPodFeed
       http_body = open(self.url, 'User-Agent' => agent).read
       RSS::Parser.parse(http_body).items.each do |item|
         next unless item.enclosure
-        next if @items.has_key? item.guid
-        rel=RubyPodRelease.new(item.title, item.enclosure)
+        next if @items.has_key? item.guid.content
+        rel=RubyPodRelease.new(item.title, item.enclosure.url)
+        if item.enclosure.url =~ /\.([^.]+)/
+          rel.format=$1
+        else
+          rel.format='unknown'
+        end
         rel.description=item.description
         rel.pubdate=item.pubDate
         rel.author=item.author
-        rel.guid=item.guid
+        rel.guid=item.guid.content
         rel.fresh=true
         rel.index=new_index
         rel.feed=self.name
         rel.base_path=self.base_path
         rel.strategy=self.store_strategy
+        rel.state=:not_loaded
         #rel.path=ReleasePath.create(rel.strategy, rel, :base_path => base_path)
         @items[rel.guid]=rel
       end
@@ -261,8 +268,8 @@ class RubyPodFeed
   end
 
   def load_items
-    return false if @conf_file.nil?
-    new_items=Oj.load_file("#{@conf_file}.items","r")
+    return false if @conf_file.nil? || (not File.exist?("#{@conf_file}.items"))
+    new_items=Oj.load_file("#{@conf_file}.items")
     max_index=self.current_index
     #warn "Loaded #{new_items.class}"
     new_items.each do |k,v|

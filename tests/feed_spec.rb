@@ -19,6 +19,17 @@ describe RubyPodFeed do
       @r.update_feed
 	    @r.releases.count.must_equal 11
   	end
+
+    it 'loads missed mp3' do
+      @r.items.delete('<guid isPermaLink=\"false\">http://www.rwpod.com/posts/2013/10/20/podcast-01-31.html</guid>')
+      system "rm -rf ~/.rubypodder/feeds"
+      @r.current_index=555
+      @r.fetch_new
+      warn ">>>>>>>>>>>>>>>>>>>>>>"
+      system "ls -R ~/.rubypodder"
+      warn "<<<<<<<<<<<<<<<<<<<<<<"
+      File.exist?(File.expand_path("~/.rubypodder/feeds/fake_feed/my_release_name-2013-11-20-00555.mp3")).must_equal true
+    end
   end
 
   describe "saves and loads state" do
@@ -26,14 +37,14 @@ describe RubyPodFeed do
       @r.conf_file='/tmp/test_config'
     end
 
-    it 'saves state and restores it' do
+    it 'saves state to file and restores it' do
       @r.save_conf
       @r.url='new.url'
       @r.load_conf
       @r.url.must_equal 'tests/test.xml'
     end
 
-    it 'saves items and restores them' do
+    it 'saves items to file and restores them' do
       @r.update_feed
       @r.save_items
       @r2=RubyPodFeed.new('second feed')

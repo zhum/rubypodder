@@ -61,7 +61,7 @@
   <pubDate>Sun, 20 Oct 2013 00:00:00 +0300</pubDate>
   <link>http://feeds.rwpod.com/~r/rwpod/~3/facRDX1LtQ0/podcast-01-31.html</link>
   <guid isPermaLink="false">http://www.rwpod.com/posts/2013/10/20/podcast-01-31.html</guid>
-  <enclosure url="test.mp3" length="24" type="audio/mpeg" />
+  <enclosure url="tests/test.mp3" length="24" type="audio/mpeg" />
   <enclosure_orig url="http://rwpod.podfm.ru/my/32/file/podfm_rwpod_my_31.mp3" length="29876424" type="audio/mpeg" />
   <media:content url="http://rwpod.podfm.ru/my/32/file/podfm_rwpod_my_31.mp3" fileSize="29876424" type="audio/mpeg" />
   <itunes:author>RWpod команда</itunes:author>
