@@ -9,6 +9,7 @@ describe ReleasePath do
   	@r=RubyPodRelease.new('release_name','tests/test.mp3')
     @r.name='my_release_name'
     @r.feed='fake feed'
+    @r.set_strategy(:custom, :pattern=>'all/my-%{feed}-%{index}-%{name}-%{year}-%{month}-%{day}.%{format}')
   end
 
   describe "feed" do
@@ -109,6 +110,20 @@ describe ReleasePath do
           f.puts ""
         end
         File.file?(File.expand_path("~/.rubypodder/feeds/all/fake_feed-00123-my_release_name-#{t}.mp9")).must_equal true
+      end
+    end
+    describe "custom" do
+      it 'full path is ~/.rubypodder/feeds/all/my-:feed-:index-:name-:date.:format' do
+        @r.index=123
+        @r.format='mp9'
+        t=Time.now.strftime("%Y-%m-%d")
+        @p=ReleasePath.create(:custom, @r, :pattern=>'all/my-%{feed}-%{index}-%{name}-%{year}-%{month}-%{day}.%{format}')
+        begin; File.delete File.expand_path("~/.rubypodder/feeds/all/my-fake_feed-00123-my_release_name-#{t}.mp9"); rescue; end
+        @p.release_file("w") do |f|
+          f.puts ""
+        end
+        warn @p.full_filename
+        File.file?(File.expand_path("~/.rubypodder/feeds/all/my-fake_feed-00123-my_release_name-#{t}.mp9")).must_equal true
       end
     end
   end

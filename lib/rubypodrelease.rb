@@ -10,13 +10,13 @@ class RubyPodRelease
       n.each do |k,v|
         instance_variable_set(k,v)
       end
-      self.strategy=self.strategy
+      set_strategy=self.strategy
     else
       @name=n
       @url=u
       @time = @pubdate = Time.now
       @state = :not_initialized
-      self.strategy = :byname
+      set_strategy = :byname
     end
   end
   
@@ -28,6 +28,11 @@ class RubyPodRelease
         nil
     end.reject{|x| x.nil?}.join(",\n  ")
     "{#{str}}\n"
+  end
+
+  def to_s
+    "Feed: #{@feed}\nTitle: #{@title}\n GUID=#{@guid}; Index=#{@index}; Date=#{@pubdate}
+  State=#{@state}; Path to mp3: #{@path.release_name} (#{File.file?(@path.release_name) ? '': 'not '}loaded)"
   end
 
   def has_shownotes?
@@ -62,9 +67,10 @@ class RubyPodRelease
     @strategy
   end
 
-  def strategy= s
+  def set_strategy(s, opts={})
     @strategy=s
-    @path=ReleasePath.create(s, self, :base_path => @base_path)
+    opts[:base_path] = @base_path
+    @path=ReleasePath.create(s, self, opts )
   end
 
   def download
@@ -74,13 +80,14 @@ class RubyPodRelease
     begin
       open(url, 'User-Agent' => agent) do |mp3stream|
         @path.release_file("w") do |mp3file|
+          warn "Loading #{mp3file.inspect}"
           rio(mp3stream) > rio(mp3file)
         end
       end
       mark_loaded
       set_status :loaded
     rescue => e
-      warn("  Failed to download #{url} (#{e.message})")
+      #warn("  Failed to download #{url} (#{e.message})")
       set_status :error
       @err_text="fail to download: #{e.message}"
     end

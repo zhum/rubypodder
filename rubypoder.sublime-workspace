@@ -1,0 +1,1453 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"cu",
+				"current_index"
+			],
+			[
+				"max",
+				"max_index"
+			],
+			[
+				"Ru",
+				"RubyPodRelease"
+			],
+			[
+				"new_i",
+				"new_items"
+			],
+			[
+				"base",
+				"base_path"
+			],
+			[
+				"tes",
+				"tests/test"
+			],
+			[
+				"must",
+				"must_equal"
+			],
+			[
+				"save",
+				"save_conf"
+			],
+			[
+				"conf",
+				"conf_file"
+			],
+			[
+				"curr",
+				"current_index"
+			],
+			[
+				"the",
+				"the_name"
+			],
+			[
+				"list_",
+				"list_releases"
+			],
+			[
+				"update",
+				"update_feed"
+			],
+			[
+				"Me",
+				"PodFeedMetadata"
+			],
+			[
+				"full_",
+				"full_filename"
+			],
+			[
+				"exp",
+				"expand_path"
+			],
+			[
+				"stor",
+				"store_strategy"
+			],
+			[
+				"ex",
+				"expanded_path"
+			],
+			[
+				"bas_",
+				"base_path"
+			],
+			[
+				"by",
+				"byname"
+			],
+			[
+				"cur",
+				"current_index"
+			],
+			[
+				"attr",
+				"attr_accessor"
+			],
+			[
+				"date",
+				"date_string"
+			],
+			[
+				"mus",
+				"must_be_nil"
+			],
+			[
+				"my_re",
+				"my_release_name"
+			],
+			[
+				"Re",
+				"ReleasePath"
+			],
+			[
+				"do",
+				"doe	do...end block"
+			],
+			[
+				"fix",
+				"fix_name"
+			],
+			[
+				"full",
+				"full_filename"
+			],
+			[
+				"release",
+				"release_file"
+			],
+			[
+				"show",
+				"shownotes_filename"
+			],
+			[
+				"shown",
+				"shownotes_dirname"
+			],
+			[
+				"def",
+				"def	def … end"
+			],
+			[
+				"que",
+				"queue_record"
+			],
+			[
+				"qu",
+				"queue_record"
+			],
+			[
+				"out",
+				"out"
+			],
+			[
+				"parse",
+				"parse_tasks"
+			],
+			[
+				"cla",
+				"cla	class .. initialize .. end"
+			],
+			[
+				"File",
+				"File	File.open(\"..\") { |file| .. }"
+			],
+			[
+				"dai",
+				"daily_status"
+			],
+			[
+				"BASE",
+				"BASE_STAT_DIR"
+			],
+			[
+				"num_",
+				"num_copies"
+			],
+			[
+				"MAIL_",
+				"MAIL_CMD"
+			],
+			[
+				"cha",
+				"changed"
+			],
+			[
+				"if",
+				"ife	if … else … end"
+			],
+			[
+				"new",
+				"new_lines"
+			],
+			[
+				"dele",
+				"deleted_lines"
+			],
+			[
+				"sub",
+				"subject"
+			],
+			[
+				"old",
+				"old_lines"
+			],
+			[
+				"each",
+				"each"
+			],
+			[
+				"read",
+				"read"
+			],
+			[
+				"get",
+				"getValue"
+			],
+			[
+				"mo",
+				"moveNode"
+			],
+			[
+				"grou",
+				"group_opts"
+			],
+			[
+				"group_",
+				"group_opts"
+			],
+			[
+				"pip",
+				"pipe_or_grid"
+			],
+			[
+				"group_b",
+				"group_body_section"
+			],
+			[
+				"bu",
+				"buffer_zone_spec"
+			],
+			[
+				"gri",
+				"grid_expr"
+			],
+			[
+				"STR",
+				"STRICT"
+			],
+			[
+				"to_",
+				"to_type"
+			],
+			[
+				"con",
+				"condition"
+			],
+			[
+				"res",
+				"results"
+			],
+			[
+				"li",
+				"list_vars"
+			],
+			[
+				"yie",
+				"yield_to"
+			],
+			[
+				"yi",
+				"yield_to"
+			],
+			[
+				"fin",
+				"finish"
+			],
+			[
+				"HopV",
+				"HopValue"
+			],
+			[
+				"fina",
+				"finalChain"
+			],
+			[
+				"agg",
+				"aggregators_private"
+			],
+			[
+				"set",
+				"set_var"
+			],
+			[
+				"ea",
+				"each"
+			],
+			[
+				"tree",
+				"tree_expressions"
+			],
+			[
+				"start",
+				"start_mutex"
+			],
+			[
+				"HopFu",
+				"HopFuncMin"
+			],
+			[
+				"clo",
+				"clone_varstore"
+			],
+			[
+				"var_",
+				"var_name"
+			],
+			[
+				"group",
+				"groups"
+			],
+			[
+				"eac",
+				"each_with_index"
+			],
+			[
+				"HopStan",
+				"HopstanceNode"
+			],
+			[
+				"HopSt",
+				"HopStatementNode"
+			],
+			[
+				"pipe",
+				"pipe_expr"
+			],
+			[
+				"var",
+				"varStore"
+			],
+			[
+				"att",
+				"attr_accessor"
+			],
+			[
+				"exe",
+				"execname"
+			],
+			[
+				"remo",
+				"remotedir"
+			],
+			[
+				"user",
+				"userdir"
+			],
+			[
+				"ana",
+				"analyze"
+			],
+			[
+				"MY",
+				"MY_MAX"
+			],
+			[
+				"csv",
+				"csv_ranges"
+			],
+			[
+				"spli",
+				"split_field"
+			],
+			[
+				"ra",
+				"ranges"
+			],
+			[
+				"sp",
+				"split"
+			],
+			[
+				"ki",
+				"kind"
+			],
+			[
+				"fie",
+				"fields"
+			],
+			[
+				"express",
+				"expression_walk"
+			],
+			[
+				"ot",
+				"other_max"
+			],
+			[
+				"my",
+				"my_max"
+			],
+			[
+				"oth",
+				"other_max"
+			],
+			[
+				"ret",
+				"return"
+			],
+			[
+				"my_",
+				"my_max"
+			],
+			[
+				"my_m",
+				"my_min"
+			],
+			[
+				"db",
+				"dbarg2"
+			],
+			[
+				"dba",
+				"dbarg2"
+			],
+			[
+				"Floa",
+				"Float::MAX"
+			],
+			[
+				"kind",
+				"kind_of"
+			],
+			[
+				"has",
+				"has_fail"
+			],
+			[
+				"has_",
+				"has_var"
+			],
+			[
+				"dbar",
+				"dbarg2"
+			],
+			[
+				"orig",
+				"orig_expr"
+			],
+			[
+				"spl",
+				"split_field"
+			],
+			[
+				"pri",
+				"printable_name"
+			],
+			[
+				"kin",
+				"kind_of"
+			],
+			[
+				"wa",
+				"expression_walk"
+			],
+			[
+				"ri",
+				"rich_raise"
+			],
+			[
+				"hoplang_",
+				"hoplang_databases"
+			],
+			[
+				"alias",
+				"alias_method"
+			],
+			[
+				"call",
+				"caller"
+			],
+			[
+				"hopla",
+				"hoplang_databases"
+			],
+			[
+				"Fi",
+				"File	File.read(\"..\")"
+			],
+			[
+				"Hop",
+				"Hoplang"
+			],
+			[
+				"inp",
+				"input"
+			],
+			[
+				"fa",
+				"fake_db"
+			],
+			[
+				"thre",
+				"threads"
+			],
+			[
+				"Buffe",
+				"HopBufferNode"
+			],
+			[
+				"stre",
+				"streamspace"
+			],
+			[
+				"ste",
+				"streamspace"
+			],
+			[
+				"stream",
+				"streamspace"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "lib/rubypodder.rb",
+			"settings":
+			{
+				"buffer_size": 7881,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "lib/releasepath.rb",
+			"settings":
+			{
+				"buffer_size": 3409,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "lib/rubypodrelease.rb",
+			"settings":
+			{
+				"buffer_size": 1625,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "tests/feed_spec.rb",
+			"settings":
+			{
+				"buffer_size": 906,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "tests/releasepath_spec.rb",
+			"settings":
+			{
+				"buffer_size": 3315,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"test",
+				"RubyTest: Show Test Panel"
+			],
+			[
+				"git ",
+				"Git: Pull"
+			],
+			[
+				"git c",
+				"Git: Commit"
+			],
+			[
+				"git",
+				"Git: Pull"
+			],
+			[
+				"grep",
+				"GrepCode Search"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"packa",
+				"Package Control: Enable Package"
+			],
+			[
+				"search",
+				"File: Search Files"
+			],
+			[
+				"ctag",
+				"CTags: Rebuild Tags"
+			],
+			[
+				"git sta",
+				"Git: Status"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			],
+			[
+				"rubyt",
+				"RubyTest: Run Last Ruby Test"
+			],
+			[
+				"ruby te",
+				"RubyTest: Verify Syntax"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"merge",
+				"Sublimerge: View Diff"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"perl",
+				"Set Syntax: Perl"
+			],
+			[
+				"ruby",
+				"Set Syntax: Ruby"
+			],
+			[
+				"gitg",
+				"Set Syntax: Git Graph"
+			],
+			[
+				":q",
+				"Bracket Highlighter: Swap Quotes"
+			],
+			[
+				"",
+				":w - Save"
+			]
+		],
+		"width": 593.0
+	},
+	"console":
+	{
+		"height": 132.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/serg/Work/HOPSA/hoplang.new/hoplang/lib/hop_init.rb",
+		"/home/serg/Work/HOPSA/hoplang.new/hoplang/lib/hopnode-ops.rb",
+		"/home/serg/Work/HOPSA/hoplang.new/hopsa-tree/ext/hoptree/hoplang.y",
+		"/home/serg/Work/HOPSA/hoplang.new/hoplang/lib/hop_dbcore.rb",
+		"/home/serg/Work/HOPSA/hoplang.new/hoplang/lib/hop_db_plain.rb",
+		"/home/serg/Work/HOPSA/hoplang.new/hoplang/lib/hopnodes.rb",
+		"/home/serg/Work/HOPSA/hoplang.new/hoplang/lib/hopvars.rb",
+		"/home/serg/Work/HOPSA/hoplang.new/hoplang/lib/hop_config.rb",
+		"/home/serg/Work/HOPSA/hoplang.new/hoplang/lib/hop_group.rb",
+		"/home/serg/Work/HOPSA/hoplang.new/hoplang/lib/hop_core.rb",
+		"/home/serg/Work/cluster/T60/software/scripts/cleo_autonomy.rb",
+		"/home/serg/Work/Errors/code/portal.rb",
+		"/home/serg/tmp/rubypodder/Rakefile",
+		"/home/serg/tmp/rubypodder/lib/rubypodder.rb",
+		"/tmp/json.c",
+		"/tmp/slurm-197896.out",
+		"/tmp/.fr-4Y5rrA/podcatcher/README.txt",
+		"/tmp/.fr-ILHBX9/podcatcher/demo/arguments.txt",
+		"/tmp/.fr-bR0cjm/Otchet/Отчет.txt",
+		"/home/serg/Рабочий стол/tasklist.xml",
+		"/tmp/.fr-54wgXi/training.txt",
+		"/home/serg/Private/Adresses.txt",
+		"/tmp/ib.c",
+		"/home/serg/Work/Book - administration/22-b2",
+		"/home/serg/Work/Book - administration/22c",
+		"/tmp/CardAccStatment.txt",
+		"/tmp/икея.txt",
+		"/tmp/.fr-1gZt9M/SNMP_Utilities_README.txt",
+		"/home/serg/Work/HOPSA/hoplang.new/hopsa-tree/ext/hoptree/lex.l",
+		"/home/serg/Work/HOPSA/hoplang.new/hoplang/lib/hop_logger.rb",
+		"/tmp/89843_Aug13.txt",
+		"/home/serg/Work/HOPSA/hoplang.new/hopcsv/ext/extconf.rb",
+		"/home/serg/Work/HOPSA/hoplang.new/hopcsv/ext/hopcsv.c",
+		"/home/serg/Work/HOPSA/hoplang.new/hoplang/lib/hpl",
+		"/home/serg/Work/HOPSA/hoplang.new/hoplang/lib/hoplang.rb",
+		"/home/serg/Work/HOPSA/HOPSA-tree/ext/hoptree/hoplang.y",
+		"/home/serg/Work/HOPSA/HOPSA-tree/ext/hoptree/lex.l",
+		"/home/serg/Work/HOPSA/HOPSA-tree/ext/hoptree/hoptree.cpp",
+		"/home/serg/Work/HOPSA/hoplang.new/hoplang/lib/t3.hpl",
+		"/media/serg/7C40-AD6A/link.txt",
+		"/home/serg/Work/HOPSA/hoplang.new/hoplang/lib/hopsa.conf",
+		"/tmp/MPI_example3_bad.c",
+		"/tmp/MPI_example4_type_bad.f",
+		"/tmp/MPI_example13_bad.c",
+		"/tmp/MPI_example5_bad.c",
+		"/tmp/MPI_example1_bad.c",
+		"/home/serg/Work/HOPSA/hoplang.new/hoplang/lib/hop_db_core.rb",
+		"/home/serg/Work/rack-examples.rb",
+		"/tmp/89843_Jul13.txt",
+		"/tmp/89843_Jul13-1.txt",
+		"/home/serg/Work/HOPSA/HOPSA-tree/hopnode-ops.rb",
+		"/home/serg/Work/HOPSA/HOPSA-tree/hopvars.rb",
+		"/home/serg/Work/HOPSA/hoplang.new/hoplang/lib/hop_nodes.rb",
+		"/home/serg/Work/HOPSA/HOPSA-tree/hop_core.rb",
+		"/home/serg/Work/HOPSA/hoplang.new/hoplang/bin/hpl",
+		"/home/serg/Work/Octoshell/opensshkey.rb",
+		"/tmp/.fr-D3LfnW/Usb Wireless Manager/Windows/Readme.txt",
+		"/home/serg/00transfer/Smart house/Usb Wireless Manager/Linux_Ubuntu/Readme.txt",
+		"/tmp/backupLog.1372273201.txt",
+		"/tmp/.fr-LPhl1r/отчет.txt",
+		"/home/serg/Work/HOPSA/hoplang.new/hoplang/lib/hpl.rb",
+		"/home/serg/Work/HOPSA/hoplang.new/hoplang/lib/old/hoplang.rb",
+		"/home/serg/Work/HOPSA/hoplang.new/hoplang/lib/old/hop_init.rb",
+		"/home/serg/Work/Гранты/Евро/hoplang.new/hoplang/lib/hoplang-base.rb",
+		"/home/serg/Work/HOPSA/HOPSA-tree/hoplang-base.rb",
+		"/home/serg/tmp/carbon-desktop/README",
+		"/home/serg/Work/HOPSA/HOPSA-tree/t1.hpl",
+		"/home/serg/Work/Errors/code/analyze/jd/get_csv.pl",
+		"/tmp/analyze_ib_in_tpl_avg_test-1370586208-27304.csv",
+		"/home/serg/Work/Errors/code/users/admin/mpi_test.c",
+		"/tmp/backupLog.1370458800.txt",
+		"/home/serg/Загрузки/compile-results.txt",
+		"/home/serg/Рабочий стол/mserror.txt.txt",
+		"/home/serg/Work/cluster/T500/Инциденты/netapp-2013-06-04.txt",
+		"/home/serg/Work/Octoshell/renames.txt",
+		"/home/serg/Work/Octoshell/multi_projects.rb",
+		"/home/serg/Загрузки/analyze.txt",
+		"/tmp/results",
+		"/tmp/.fr-bN5KJ8/Usb Wireless Manager/Linux_Ubuntu/Readme.txt",
+		"/tmp/id_rsa.pub",
+		"/home/serg/Work/Errors/code/analyze/clean",
+		"/tmp/89843_Jun13.txt",
+		"/tmp/.fr-LRaqEH/slurm-244.out",
+		"/tmp/slurm-232.out",
+		"/tmp/qq",
+		"/tmp/slurm-98.out",
+		"/tmp/slurm-133.out",
+		"/home/serg/Work/Errors/code/analyze/jd/tcpdump.txt",
+		"/home/serg/Work/Errors/code/users/admin/mpi_check.c",
+		"/tmp/analyze_mpi",
+		"/tmp/executable-mpi_gcc.out-3471",
+		"/tmp/slurm.out",
+		"/home/serg/downl/memcheck.c",
+		"/home/serg/Work/Octoshell/cluster_users-new2.pl",
+		"/home/serg/Work/HOPSA/jobdigest/templates/analyze_eth_tpl8.txt",
+		"/home/serg/Work/HOPSA/HOPSA-tree/ext/hoptree/atree.hpp",
+		"/home/serg/Work/HOPSA/HOPSA-tree/ext/hoptree/atree.cpp",
+		"/tmp/backupLog.1368730800.txt",
+		"/tmp/Error_in_Connection.docx",
+		"/home/serg/NonWork/Javascript-examples/js-drawing-canvas-examples.js",
+		"/tmp/analyze_upc",
+		"/tmp/semtex.c",
+		"/tmp/backupLog.1368521010.txt",
+		"/tmp/edu-nvidia-2013-feb-015.pub",
+		"/home/serg/Work/HOPSA/HOPSA-tree/ext/hoptree/extconf.rb",
+		"/home/serg/Work/HOPSA/HOPSA-tree/Rakefile",
+		"/home/serg/Work/HOPSA/HOPSA-tree/hoptree-test.rb",
+		"/tmp/ssh_log.log",
+		"/tmp/executable-Intel.out-24270",
+		"/tmp/h2o-2.out",
+		"/tmp/h2o-1.out",
+		"/home/serg/Work/HOPSA/HOPSA-tree/hoptree.gemspec",
+		"/home/serg/Work/HOPSA/HOPSA-tree/grammar/hoplang.y",
+		"/home/serg/Work/HOPSA/HOPSA-tree/grammar/lex.l",
+		"/home/serg/Work/HOPSA/HOPSA-tree/grammar/hoplang.cpp",
+		"/tmp/lom_login_fail",
+		"/home/serg/Work/HOPSA/HOPSA-tree/atree.hpp",
+		"/home/serg/Work/HOPSA/HOPSA-tree/atree-test.cpp",
+		"/home/serg/Work/HOPSA/HOPSA-tree/atree.cpp",
+		"/home/serg/Work/HOPSA/HOPSA-tree/hoplang_exe.cpp",
+		"/home/serg/Work/HOPSA/HOPSA-tree/ext/hoplangtree/hopsatree.c",
+		"/home/serg/MyMatherials/publications.txt",
+		"/home/serg/Work/HOPSA/HOPSA-tree/grammar/t_top.hpl",
+		"/home/serg/Ubuntu One/webfont1.css",
+		"/tmp/flutter_plate_2nodes.log",
+		"/tmp/cluster-diff",
+		"/home/serg/Work/Octoshell/cluster_users-new3.pl",
+		"/tmp/du_mz.txt"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"warn",
+			"expanded",
+			"serie",
+			"name",
+			"RubyPodSaver",
+			"ftoo",
+			"mail",
+			"moveNode",
+			"value",
+			"DEBUG",
+			"elsif",
+			"END",
+			"clause_li",
+			"grid_ex",
+			"grid expr",
+			"pipe_ex",
+			"range_or",
+			"ce5",
+			"pipe_expr",
+			"grid",
+			"pipe_ex",
+			"in",
+			"group",
+			"to_i",
+			"var_name",
+			"INDEX=",
+			"hopval",
+			"listnode",
+			"list",
+			"context",
+			"base",
+			"FINIS",
+			"get_val",
+			"yie",
+			"grp",
+			"varnode",
+			"varno",
+			"grp",
+			"do_call",
+			"10",
+			"pipe_count",
+			"thread",
+			"hopp",
+			"printab",
+			"varia",
+			"final",
+			"process",
+			"processor",
+			"process",
+			"aggrf",
+			"]].",
+			"count",
+			"Countno",
+			"Count",
+			"set_val",
+			"set",
+			"aggrfu",
+			"decl",
+			"while",
+			"get_out_pipe",
+			"lock",
+			"join",
+			"in_pipe",
+			"def get",
+			"pipe",
+			"to_type",
+			"expression_wa",
+			"expresion_wa",
+			"#",
+			"hopstance",
+			"group",
+			"grid_ex",
+			"tupled",
+			"move",
+			"grid",
+			"group",
+			"&&",
+			"hopstance_e",
+			"grid",
+			"each",
+			"save",
+			"put",
+			"analyzer",
+			"Float::",
+			"xedi",
+			"Indexedi",
+			"IndexI",
+			"varnod",
+			"filter",
+			"<<<<<",
+			">>>",
+			"hop_warn",
+			"ppipe",
+			"pipe",
+			"hopsa",
+			"hposa",
+			"hop_warn",
+			"Hopsa",
+			"446",
+			"ppipe",
+			"pipe",
+			"new_fake",
+			"fake",
+			"fake_db",
+			"get_ou",
+			"top",
+			".join",
+			"pipe",
+			"QQ",
+			"qq",
+			"thread",
+			"n",
+			"thread",
+			"hopbuffer",
+			"hopbuff",
+			"_str",
+			"line",
+			"line_str",
+			"line",
+			"varsto",
+			"clone",
+			"thread",
+			"pipe",
+			"stream",
+			"hopvarnode",
+			"pipe",
+			"raise",
+			"line"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			",",
+			"; DEBUG_OUT ",
+			"; DEBUG_OUT",
+			"yylval",
+			"yyval",
+			"\\\"([^\\\"\\'\\\\]|\\\\[uU][0-9a-fA-F]{0,4}|\\\\[\\'\\\"abefnrstv])*\\\"   yylval.string=strdup(yytext); return STRING;\n\nyyval",
+			"-",
+			"_",
+			"clause_list",
+			"hoplang_prog",
+			"",
+			";00000;",
+			"00000",
+			";0-0-0;",
+			"",
+			": ",
+			"",
+			": ",
+			" => 'lwm2_',",
+			" => '',",
+			"' => '',",
+			"  '",
+			"'$1' => '',",
+			"$1",
+			"",
+			"''",
+			"``",
+			"---",
+			"/",
+			"|",
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "lib/rubypodder.rb",
+					"settings":
+					{
+						"buffer_size": 7881,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6136,
+								6136
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"function_name_status_row": 251,
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3913.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "lib/releasepath.rb",
+					"settings":
+					{
+						"buffer_size": 3409,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								463,
+								463
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"function_name_status_row": 18,
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "lib/rubypodrelease.rb",
+					"settings":
+					{
+						"buffer_size": 1625,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								712,
+								712
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"function_name_status_row": 26,
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "tests/feed_spec.rb",
+					"settings":
+					{
+						"buffer_size": 906,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								826,
+								826
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"function_name_status_row": 39,
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 17.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "tests/releasepath_spec.rb",
+					"settings":
+					{
+						"buffer_size": 3315,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								363,
+								363
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"function_name_status_row": 18,
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 67.0
+	},
+	"output.git":
+	{
+		"height": 101.0
+	},
+	"output.sftp":
+	{
+		"height": 112.0
+	},
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 216.0,
+	"status_bar_visible": true
+}

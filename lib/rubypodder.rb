@@ -170,7 +170,7 @@ end
 
 class PodFeedMetadata
   attr_accessor :name, :url, :date, :agent, :current_index
-  attr_accessor :base_path, :store_strategy
+  attr_accessor :base_path, :store_strategy, :store_opts
 end
 
 class RubyPodFeed
@@ -180,10 +180,10 @@ class RubyPodFeed
   attr_reader   :metadata
 
   def_delegators :@metadata, :name, :url, :date, :agent, :current_index
-  def_delegators :@metadata, :base_path, :store_strategy
+  def_delegators :@metadata, :base_path, :store_strategy, :store_opts
 
   def_delegators :@metadata, :name=, :url=, :date=, :agent=, :current_index=
-  def_delegators :@metadata, :base_path=, :store_strategy=
+  def_delegators :@metadata, :base_path=, :store_strategy=, :store_opts=
 
   def initialize(the_name, conf=nil)
     default_init
@@ -191,6 +191,7 @@ class RubyPodFeed
     #warn "Name=#{name}/#{@metadata.name}"
     @conf_file=conf
     @items={}
+    self.store_opts ||= {}
   end
   
   def fetch_new
@@ -225,8 +226,8 @@ class RubyPodFeed
         rel.fresh=true
         rel.index=new_index
         rel.feed=self.name
-        rel.base_path=self.base_path
-        rel.strategy=self.store_strategy
+        rel.base_path=self.base_path,
+        rel.set_strategy(self.store_strategy, self.store_opts)
         rel.state=:not_loaded
         #rel.path=ReleasePath.create(rel.strategy, rel, :base_path => base_path)
         @items[rel.guid]=rel
@@ -293,8 +294,8 @@ private
   end
 
   def new_index
-    @current_index ||= 0
-    @current_index+=1
+    self.current_index ||= 0
+    self.current_index+=1
   end
 
   def log_start

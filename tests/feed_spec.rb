@@ -1,5 +1,8 @@
+#
+# encoding: utf-8
 require 'minitest/spec'
 require 'minitest/autorun'
+require "webmock/minitest"
 #require "minitest_helper"
 
 require 'rubypodder'
@@ -17,18 +20,24 @@ describe RubyPodFeed do
 
 	  it "loads all items" do
       @r.update_feed
-	    @r.releases.count.must_equal 11
+	    @r.releases.count.must_equal 2
   	end
 
     it 'loads missed mp3' do
-      @r.items.delete('<guid isPermaLink=\"false\">http://www.rwpod.com/posts/2013/10/20/podcast-01-31.html</guid>')
-      system "rm -rf ~/.rubypodder/feeds"
+      stub_request(:any, %r/.*podfm.*/).to_return(:body => "mp3 content")
+
+      @r.fetch_new
+      @r.items.map { |e| warn e.to_s }
+      @r.items.delete('http://www.rwpod.com/posts/2013/10/20/podcast-01-31.html')
+      system "rm -f ~/.rubypodder/feeds/test_feed_name/31S01-2013-10-20-*"
       @r.current_index=555
+      @r.update_feed
       @r.fetch_new
       warn ">>>>>>>>>>>>>>>>>>>>>>"
-      system "ls -R ~/.rubypodder"
+      @r.items.each { |k,e| warn e.to_s }
+#      system "ls -R ~/.rubypodder >&2"
       warn "<<<<<<<<<<<<<<<<<<<<<<"
-      File.exist?(File.expand_path("~/.rubypodder/feeds/fake_feed/my_release_name-2013-11-20-00555.mp3")).must_equal true
+      File.exist?(File.expand_path("~/.rubypodder/feeds/test_feed_name/31S01-2013-10-20-00001.mp3")).must_equal true
     end
   end
 
@@ -50,7 +59,7 @@ describe RubyPodFeed do
       @r2=RubyPodFeed.new('second feed')
       @r2.conf_file='/tmp/test_config'
       @r2.load_items
-      @r2.releases.count.must_equal 11
+      @r2.releases.count.must_equal 2
     end
 
   end

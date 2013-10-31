@@ -54,6 +54,14 @@ class ReleasePath
     File.file? release_file
   end
 
+  def full_filename
+    File.join full_dirname, release_name
+  end
+
+  def shownotes_filename
+    File.join shownotes_dirname, shownotes_name
+  end
+
 private
 
   def initialize(release, opts={})
@@ -61,6 +69,7 @@ private
     @feed = fix_name(@release.feed) || 'unsorted'
     @name  = fix_name(@release.name) || 'unnamed'
     @base_path = opts[:base_path] || DEFAULT_BASE
+    @opts=opts
   end
 
   def ensure_dir dir
@@ -87,13 +96,6 @@ class ReleasePathByName <ReleasePath
     File.join @base_path, 'shownotes', @feed
   end
   
-  def full_filename
-    File.join full_dirname, release_name
-  end
-
-  def shownotes_filename
-    File.join shownotes_dirname, shownotes_name
-  end
 end
 
 class ReleasePathByDate <ReleasePath
@@ -112,14 +114,6 @@ class ReleasePathByDate <ReleasePath
   
   def shownotes_dirname
     File.join @base_path, 'shownotes', release.date_string
-  end
-  
-  def full_filename
-    File.join full_dirname, release_name
-  end
-
-  def shownotes_filename
-    File.join shownotes_dirname, shownotes_name
   end
 end
 
@@ -140,13 +134,64 @@ class ReleasePathInHeap <ReleasePath
   def shownotes_dirname
     File.join @base_path, 'shownotes', 'all'
   end
-  
-  def full_filename
-    File.join full_dirname, release_name
+end
+
+class ReleasePathCustom <ReleasePath
+
+  def filter x
+    x.gsub('/','_')
+    fix_name x
   end
 
-  def shownotes_filename
-    File.join shownotes_dirname, shownotes_name
+  def release_name
+    pattern2name @pattern
+  end
+
+  def shownotes_name
+    pattern2name @shownotes_name
+  end
+
+  def pattern2name name
+    name.gsub(/%\{([a-z_]+)\}/){|match|
+      filter case(match)
+      when '%{feed}'
+        @release.feed.to_s
+      when '%{title}'
+        @release.title.to_s
+      when '%{name}'
+        @release.name.to_s
+      when '%{index}'
+        "%05d" % @release.index.to_s
+      when '%{date}'
+        @release.pubdate.to_s
+      when '%{year}'
+        '%04d' % @release.pubdate.year
+      when '%{month}'
+        '%02d' % @release.pubdate.month
+      when '%{day}'
+        '%02d' % @release.pubdate.day
+      when '%{format}'
+        @release.format.to_s
+      when '%{author}'
+        @release.author.to_s
+      else
+        "%{#{match}}"
+      end
+    }
+  end
+
+  def full_dirname
+    File.join @base_path, 'feeds'
+  end
+  
+  def shownotes_dirname
+    File.join @base_path, 'shownotes'
+  end
+
+  def initialize(release, opts={})
+    super
+    @pattern=opts[:pattern] || 'NO PATTERN'
+    @shownotes_pattern=opts[:shownotes_pattern] || 'NO PATTERN'
   end
 end
 
@@ -159,5 +204,7 @@ class ReleasePath
       'bydate'=> ReleasePathByDate,
       :inheap => ReleasePathInHeap,
       'inheap'=> ReleasePathInHeap,
+      :custom => ReleasePathCustom,
+      'custom'=> ReleasePathCustom,
     }
 end
