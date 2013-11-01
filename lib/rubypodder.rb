@@ -226,7 +226,7 @@ class RubyPodFeed
         rel.fresh=true
         rel.index=new_index
         rel.feed=self.name
-        rel.base_path=self.base_path,
+        rel.base_path=self.base_path
         rel.set_strategy(self.store_strategy, self.store_opts)
         rel.state=:not_loaded
         #rel.path=ReleasePath.create(rel.strategy, rel, :base_path => base_path)

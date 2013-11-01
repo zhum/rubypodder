@@ -122,7 +122,7 @@ describe ReleasePath do
         @p.release_file("w") do |f|
           f.puts ""
         end
-        warn @p.full_filename
+        #warn @p.full_filename
         File.file?(File.expand_path("~/.rubypodder/feeds/all/my-fake_feed-00123-my_release_name-#{t}.mp9")).must_equal true
       end
     end

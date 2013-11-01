@@ -5,6 +5,8 @@ require 'minitest/autorun'
 require "webmock/minitest"
 #require "minitest_helper"
 
+WebMock.disable_net_connect!
+
 require 'rubypodder'
 
 describe RubyPodFeed do
@@ -27,17 +29,17 @@ describe RubyPodFeed do
       stub_request(:any, %r/.*podfm.*/).to_return(:body => "mp3 content")
 
       @r.fetch_new
-      @r.items.map { |e| warn e.to_s }
+      #@r.items.map { |e| warn e.to_s }
       @r.items.delete('http://www.rwpod.com/posts/2013/10/20/podcast-01-31.html')
       system "rm -f ~/.rubypodder/feeds/test_feed_name/31S01-2013-10-20-*"
       @r.current_index=555
       @r.update_feed
       @r.fetch_new
-      warn ">>>>>>>>>>>>>>>>>>>>>>"
-      @r.items.each { |k,e| warn e.to_s }
+      #warn ">>>>>>>>>>>>>>>>>>>>>>"
+      #@r.items.each { |k,e| warn e.to_s }
 #      system "ls -R ~/.rubypodder >&2"
-      warn "<<<<<<<<<<<<<<<<<<<<<<"
-      File.exist?(File.expand_path("~/.rubypodder/feeds/test_feed_name/31S01-2013-10-20-00001.mp3")).must_equal true
+      #warn "<<<<<<<<<<<<<<<<<<<<<<"
+      File.exist?(File.expand_path("~/.rubypodder/feeds/test_feed_name/31S01-2013-10-20-00556.mp3")).must_equal true
     end
   end
 

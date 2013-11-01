@@ -3,27 +3,29 @@ class RubyPodRelease
   attr_accessor :name, :title, :content, :shownotes, :index, :feed
   attr_accessor :format, :time, :url, :guid, :description, :mp3, :link
   attr_accessor :author, :pubdate
-  attr_accessor :mp3link, :state, :fresh, :path, :base_path, :err_text
+  attr_accessor :mp3link, :state, :fresh, :base_path, :err_text
+  attr_reader :path
 
   def initialize(n, u='')
     if n.kind_of? Hash
       n.each do |k,v|
         instance_variable_set(k,v)
       end
-      set_strategy=self.strategy
+      set_strategy(self.strategy)
     else
       @name=n
       @url=u
       @time = @pubdate = Time.now
       @state = :not_initialized
-      set_strategy = :byname
+      set_strategy(:byname)
     end
   end
   
   def to_json
     str=instance_variables.map do |i|
       v=instance_variable_get(i)
-      [String,Array,Fixnum,Bignum,Symbol].include?(v.class) ?
+      #warn "Saving '#{i} (#{v.class}): #{v.inspect}"
+      [String,Fixnum,Bignum,Symbol,TrueClass,FalseClass,Time].include?(v.class) ?
         Oj.dump({i=>v})[1..-2] :
         nil
     end.reject{|x| x.nil?}.join(",\n  ")
@@ -80,7 +82,7 @@ class RubyPodRelease
     begin
       open(url, 'User-Agent' => agent) do |mp3stream|
         @path.release_file("w") do |mp3file|
-          warn "Loading #{mp3file.inspect}"
+          #warn "Loading #{mp3file.inspect}"
           rio(mp3stream) > rio(mp3file)
         end
       end
